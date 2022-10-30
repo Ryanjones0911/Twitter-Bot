@@ -1,0 +1,19 @@
+consumerKey = "oHODtaZ4lhbBNzdipu264EZyB"
+consumerSecret = "9FSSz45g79bIZ86tYtI1A16v2qefbxPDovxriDTftTxGScJkkM"
+accessToken = "1580913027146194944-lJjqkVc7y7bvliIpcowcWYavTZxrBg"
+accessSecret = "QTkLncj5RimG7oz7JgTlBavpHLn6Xh7Yw69BZLZQb6iFT"
+bearerToken = "AAAAAAAAAAAAAAAAAAAAAOWqiAEAAAAAQNuCPNSbxjs2AGzGM%2FpS7qTNFUo%3D9S04BtXdeU4Pv2Ckyi3JW1dUzYUWJjl7Dg064yVrj9JG4e67oV"
+OpenSecretsAPIKey = "45b23b770058e0bbcdabd38904375366"
+
+def ShowMentions(userID):
+    mentions = client.get_users_mentions(userID, expansions=["author_id"])
+    listOfMentions = []
+    print("Your Mentions:")
+    for mentions in mentions.data:
+        user = client.get_user(id=mentions.author_id)
+        print("From username: ", end='')
+        print(user.data)
+        print(mentions)
+        print()
+        listOfMentions.append(mentions.author_id)
+    return listOfMentions
